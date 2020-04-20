@@ -1,5 +1,4 @@
-import com.FARC.x00022319.Documento;
-import com.FARC.x00022319.Empleado;
+package com.FARC.x00022319;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -28,8 +27,14 @@ public class Empresa {
 
     public static void quitEmpleado(String nombre){
         final String nombreFinal = nombre;
+
         planilla.removeIf(s->s.getNombre().equals(nombreFinal));
-    }
+
+        for(Empleado i : planilla){
+            if(i.getNombre().equals(nombreFinal)){planilla.remove(i);
+                JOptionPane.showMessageDialog(null, "se ha despedido ha esa persona");}else{JOptionPane.showMessageDialog(null, "No se a encontrado a "+ nombreFinal);};
+        }}
+
 
     public static String getNombre() {
         return Nombre;
@@ -69,17 +74,17 @@ public class Empresa {
                 nombreM();
             } else{}}catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Ha introducido un valor invalido intentelo de nuevo");
-            numeroM();
+            nombreM();
         }}
 
     public static void numeroM(){
         try { numero = JOptionPane.showInputDialog(null, "Agregando documentos...\n" +
                 "Digite el numero del documento que desea agregar: ");
             if (numero.equals("")) {  JOptionPane.showMessageDialog(null, "Usted maneja el BoteMovil invisible o como?");
-                nombreM();
+                numeroM();
             } else{}}catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Ha introducido un valor invalido intentelo de nuevo");
-            nombreM();
+            numeroM();
         }}
 
 
