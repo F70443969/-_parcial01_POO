@@ -53,3 +53,12 @@ public final class CalculadoraImpuestos {
         return salario;
     }
 
+    public static String MostrarTotales(){
+        return "Regristro de totales de APF, ISSS y Renta.\n" +
+                "AFP: " + TOTALAFP + "\n" +
+                "ISS: " + TOTALISSS + "\n" +
+                "Renta: " + TOTALRenta;
+
+    }
+
+}
