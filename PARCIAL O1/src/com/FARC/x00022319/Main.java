@@ -64,3 +64,52 @@ public class Main {
                         JOptionPane.showMessageDialog(null, Objeto.getPlanilla() + "\n");
                     }
                     break;
+                case 4:
+                    if (Objeto.getPlanilla().isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "La lista esta vacia, no se puede calcular el salario de 'nadie'");
+                    } else {
+
+                        nombre = JOptionPane.showInputDialog(null, "Digite el nombre de la persona que desea calcular el salario: ");
+
+                        try {
+                            final String nombreFinal = nombre;
+                            for (Empleado i : Objeto.getPlanilla()) {
+                                if (i.getNombre().equals(nombreFinal)) {
+                                    JOptionPane.showMessageDialog(null, CalculadoraImpuestos.calcularPago(i));
+                                }
+                            }
+                        } catch (ConcurrentModificationException e) {
+                            JOptionPane.showMessageDialog(null, "La lista esta vacia.");
+                        }
+                    };
+
+
+
+
+                    break;
+
+
+                case 5:
+
+
+                    if (Objeto.getPlanilla().isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "No se han inscrito ningun empleado, no se puede calcular el total de 'nada'");
+                    } else {JOptionPane.showMessageDialog(null, CalculadoraImpuestos.MostrarTotales());
+                    }
+
+
+                    break;
+
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Cerrando...");
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, dariaError());
+                    break;
+            }
+
+        } while (opc != 0);
+    };
