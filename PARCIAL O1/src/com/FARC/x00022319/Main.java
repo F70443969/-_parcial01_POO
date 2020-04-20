@@ -112,4 +112,132 @@ public class Main {
             }
 
         } while (opc != 0);
-    };
+    }
+    public static String NombreEmpresa(){return "Bienvenido\n" +
+            "Digite el nombre de la empresa: ";};
+
+    public static String Menu(){return "1. Agregar empleado\n" +
+            "2. Despedir empleado\n" +
+            "3. Ver lista de empleados\n" +
+            "4. Calcular Sueldo\n" +
+            "5. Mostar totales\n" +
+            "0. Cerrar";};
+
+    public static String servicioOplaza(){return "Bienvenido\n" +
+            "1. Servicio profesional\n" +
+            "2. Plaza Fija ";};
+
+    public static String dariaError(){return "No se digito una opcion valida.\n" +
+            "Regresando....";}
+
+    public static Empleado addServicioProfesionales(){
+
+        nombreM();
+        PuestoM();
+        salarioM();
+        mesesDeContratoM();
+        return new ServicioProfesional(nombre, puesto, salario, mesesDeContrato);
+    }
+
+    public static Empleado addPlazafija(){
+        nombreM();
+        PuestoM();
+        salarioM();
+        extensionM();
+        return new PlazaFija(nombre, puesto, salario, extension);
+    }
+
+    public static void pedir(){
+        try { opc2 = Byte.parseByte(JOptionPane.showInputDialog(null, Menu()));
+            opc = opc2;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha introducido un caracter/valor invalido intentelo de nuevo");
+            pedir();}; }
+
+
+    public static void salarioM(){
+        try { salario = Double.parseDouble(JOptionPane.showInputDialog(null,"Digite el salario: "));
+            if(salario <= 0){JOptionPane.showMessageDialog(null, "Enserio gana " + salario+ "?" );
+                salarioM();}else{};}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha introducido un caracter/valor invalido intentelo de nuevo");
+            salarioM();}; }
+
+    public static void extensionM(){
+        try { extension = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite en numero de telefono: "));
+            if(extension <= 0){JOptionPane.showMessageDialog(null, "Enserio su numero es negativo?" );
+                extensionM();}else{};}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha introducido un caracter/valor invalido intentelo de nuevo");
+            extensionM();}; }
+
+    public static void mesesDeContratoM(){
+        try {
+            mesesDeContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite la cantidad de meses de contrato: "));
+
+            if (mesesDeContrato <=0) { JOptionPane.showMessageDialog(null, "No se puede trabajar en tiempo negativo o si?");
+
+                mesesDeContratoM();
+            } else{}
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha introducido un caracter/valor invalido intentelo de nuevo");
+            mesesDeContratoM();};
+    }
+
+    public static void PuestoM(){
+        try{   puesto = JOptionPane.showInputDialog(null, "Digite el puesto del empleado:");
+            if(puesto.equals("")){JOptionPane.showMessageDialog(null, "No trabaja aqui o como?");
+                PuestoM();}else{};}catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Ha introducido un valor invalido intentelo de nuevo");
+
+        }}
+
+    public static void nombreM(){
+        try {nombre = JOptionPane.showInputDialog(null, "Digite el nombre del empleado:");
+            if (nombre.equals("")) {  JOptionPane.showMessageDialog(null, "Enserio no tiene nombre?");
+                nombreM();
+            } else{}}catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Ha introducido un valor invalido intentelo de nuevo");
+            nombreM();
+        }}
+
+    public static void opcServicioOPlazaM(){
+        try { opcServicioOPlaza = Byte.parseByte(JOptionPane.showInputDialog(null, servicioOplaza()));
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha introducido un caracter/valor invalido intentelo de nuevo");
+            opcServicioOPlazaM();}
+    }
+
+    public static void nombreE() {
+        try {
+
+            nombreEmpresa = JOptionPane.showInputDialog(null, "Digite el nombre de su empresa:");
+
+            if (nombreEmpresa.equals("")){
+
+                opc2 = Byte.parseByte(JOptionPane.showInputDialog(null, "Seguro que su empresa no tiene nombre?\n" +
+                        "1. Si\n" +
+                        "0. No"));
+
+                switch (opc2) {
+                    case 0:
+                        nombreE();
+                    case 1:
+                        break;
+
+                    default:
+                        JOptionPane.showMessageDialog(null, "Digite una opcion valida");
+                        break;
+                }
+
+
+                ;
+            }else{}}catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Ni superman oculta tanto su identidad" );
+            //nombreE();
+        }};
+
+
+
+}//fin de proyecto
